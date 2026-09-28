@@ -1,0 +1,56 @@
+name: Generate Cat Contribution
+
+on:
+  schedule:
+    - cron: "40 18 * * *"   # 毎日 03:40 JST
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+
+      - name: Fetch contribution calendar
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh api graphql -f query='
+            query($login: String!) {
+              user(login: $login) {
+                contributionsCollection {
+                  contributionCalendar {
+                    totalContributions
+                    weeks { contributionDays { contributionCount date weekday } }
+                  }
+                }
+              }
+            }' -F login="${{ github.repository_owner }}" > /tmp/calendar.json
+          python3 -c "import json;d=json.load(open('/tmp/calendar.json'));print('取得:', d['data']['user']['contributionsCollection']['contributionCalendar']['totalContributions'], 'contributions')"
+
+      - name: Generate SVG
+        run: python3 scripts/gen_cat_graph.py assets/cat-contribution.svg < /tmp/calendar.json
+
+      - name: Commit & Push
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add -A
+          if git diff --staged --quiet; then
+            echo "変更なし"
+            exit 0
+          fi
+          git commit -m "chore: 黒猫のコントリビューションを更新"
+          # 他のワークフローと同時に走ると push が競合するのでリトライする
+          for i in 1 2 3 4 5; do
+            if git pull --rebase --autostash origin main && git push origin main; then
+              echo "push 成功（試行 $i 回目）"
+              exit 0
+            fi
+            echo "競合。再試行します（$i/5）"
+            sleep 7
+          done
+          exit 1
