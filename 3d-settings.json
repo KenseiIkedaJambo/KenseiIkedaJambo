@@ -1,0 +1,11 @@
+{
+  "type": "normal",
+  "fileName": "profile-space.svg",
+  "backgroundColor": "#04050e",
+  "foregroundColor": "#c7d2fe",
+  "strongColor": "#e8ecff",
+  "weakColor": "#6b7aa8",
+  "radarColor": "#22d3ee",
+  "growingAnimation": true,
+  "contribColors": ["#0b1026", "#312e81", "#5b21b6", "#7c3aed", "#c084fc"]
+}
