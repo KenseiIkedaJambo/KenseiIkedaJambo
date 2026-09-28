@@ -64,7 +64,7 @@ React Native + Expo で、設計・実装・リリース・運用まで一通り
 
 <div align="center">
 
-<img height="180" src="https://streak-stats.demolab.com?user=KenseiIkedaJambo&theme=tokyonight&hide_border=true&background=0D1117&ring=60A5FA&fire=F59E0B&currStreakLabel=60A5FA&dates=C9D1D9&sideLabels=C9D1D9" alt="streak" />
+<img height="180" src="https://raw.githubusercontent.com/KenseiIkedaJambo/KenseiIkedaJambo/main/profile/streak.svg" alt="streak" />
 
 </div>
 
