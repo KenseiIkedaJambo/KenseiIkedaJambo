@@ -60,7 +60,7 @@ React Native + Expo で、設計・実装・リリース・運用まで一通り
 
 <div align="center">
 
-<img src="https://github-profile-trophy-orcin-eta.vercel.app/?username=KenseiIkedaJambo&theme=tokyonight&no-frame=true&no-bg=true&column=7&rank=-%3F" alt="trophy" />
+<img src="https://github-profile-trophy-orcin-eta.vercel.app/?username=KenseiIkedaJambo&theme=radical&no-frame=true&no-bg=true&column=7&rank=-%3F" alt="trophy" />
 
 </div>
 
