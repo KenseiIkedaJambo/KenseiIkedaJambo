@@ -2,7 +2,7 @@ name: Update streak stats
 
 on:
   schedule:
-    - cron: "0 18 * * *"   # 毎日 03:00 JST
+    - cron: "20 18 * * *"   # 毎日 03:00 JST
   workflow_dispatch:
 
 jobs:
@@ -21,10 +21,24 @@ jobs:
           path: profile/streak.svg
           token: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Commit streak stats
+      - name: Commit & Push
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add profile/streak.svg
-          git commit -m "chore: ストリークを更新" || exit 0
-          git push
+          git add -A
+          if git diff --staged --quiet; then
+            echo "変更なし"
+            exit 0
+          fi
+          git commit -m "chore: ストリークを更新"
+          # 他のワークフローと同時に走ると push が競合するのでリトライする
+          for i in 1 2 3 4 5; do
+            if git pull --rebase --autostash origin main && git push origin main; then
+              echo "push 成功（試行 $i 回目）"
+              exit 0
+            fi
+            echo "競合。再試行します（$i/5）"
+            sleep 7
+          done
+          echo "5 回試して push できませんでした"
+          exit 1
