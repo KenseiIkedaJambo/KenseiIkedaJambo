@@ -1,23 +1,3 @@
-<div align="center">
-
-<img src="https://raw.githubusercontent.com/KenseiIkedaJambo/KenseiIkedaJambo/main/assets/space-header.svg" alt="Kensei Ikeda" width="100%" />
-
-</div>
-
----
-
-## 🌌 About
-
-株式会社ジャンボで **iOS ネイティブアプリ**を作っています。
-React Native + Expo で、設計・実装・リリース・運用まで一通り担当。
-
-- 🏗️ Clean Architecture + MVVM を軸にしたモバイルアプリ設計
-- 📱 Expo Config Plugin / ネイティブモジュール（Swift）まで踏み込む
-- 🔭 Datadog / Sentry での監視と、Terraform による DB インフラ管理
-- 🤖 コーディングエージェント（Claude Code / Codex）を前提にした開発フロー整備
-
----
-
 ## 🎖️ Certifications
 
 <div align="center">
