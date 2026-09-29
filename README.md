@@ -21,7 +21,7 @@
 **Mobile / Frontend**
 
 ![skills](https://skillicons.dev/icons?i=react,nextjs&theme=dark)
-![React Native](https://img.shields.io/badge/React_Native-0b1026?style=for-the-badge&logo=react&logoColor=61DAFB) ![Expo](https://img.shields.io/badge/Expo-0b1026?style=for-the-badge&logo=expo&logoColor=E8ECFF)
+![React Native](https://img.shields.io/badge/React_Native-0b1026?style=for-the-badge&logo=react&logoColor=61DAFB)
 
 **Backend / Infra**
 
